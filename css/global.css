@@ -1,0 +1,96 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+}
+
+main {
+    width: 100vw;
+    height: 100vh;
+}
+
+#field {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -3;
+}
+
+#crawl {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    z-index: -2;
+    font-family: Deathstar, Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    color: white;
+    font-size: 4rem;
+    perspective: 200px;
+}
+
+#crawl p {
+    transform: rotateX(20deg);
+    animation: starwars 30s ease-in;
+    animation-iteration-count: infinite;
+    margin: 0 auto;
+}
+
+#crawl p span {
+    font-size: 150%;
+}
+
+#overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+@keyframes starwars {
+    0% {
+        transform: rotateX(20deg) translateY(750px);
+    }
+
+    100% {
+        transform: rotateX(20deg) translateY(-1500px);
+    }
+}
+
+@keyframes starwars1200 {
+    0% {
+        transform: rotateX(20deg) translateY(565px);
+    }
+
+    100% {
+        transform: rotateX(20deg) translateY(-1500px);
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    #crawl {
+        font-size: 1rem;
+    }
+
+    #crawl p {
+        animation: starwars1200 30s ease-in;
+    }
+}
+
+@font-face {
+    font-family: 'Deathstar';
+    font-style: normal;
+    font-weight: 100;
+    font-display: swap;
+    src: url('https://cdn.designly.biz/fonts/deathstar/death_star-webfont.eot');
+    src: local(''),
+        url('https://cdn.designly.biz/fonts/deathstar/death_star-webfont.eot?#iefix') format('embedded-opentype'),
+        url('https://cdn.designly.biz/fonts/deathstar/death_star-webfont.woff2') format('woff2'),
+        url('https://cdn.designly.biz/fonts/deathstar/death_star-webfont.woff') format('woff'),
+        url('https://cdn.designly.biz/fonts/deathstar/deathstar.otf') format('opentype'),
+        url('https://cdn.designly.biz/fonts/deathstar/death_star-webfont.svg') format('svg');
+}
