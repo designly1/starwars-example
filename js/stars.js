@@ -1,35 +1,17 @@
-var getUrlParameter = function getUrlParameter(sParam) {
-    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-        sURLVariables = sPageURL.split('&'),
-        sParameterName,
-        i;
+// stars.js
 
-    for (i = 0; i < sURLVariables.length; i++) {
-        sParameterName = sURLVariables[i].split('=');
-
-        if (sParameterName[0] === sParam) {
-            return sParameterName[1] === undefined ? true : sParameterName[1];
-        }
-    }
-};
-
+// Get canvas element by its ID
 var field = document.getElementById("field");
 
 // Make sure field canvas exists
 var f = (typeof field.getContext === 'function') ? field.getContext("2d") : null;
 
+// Config
 var stars = {};
 var starIndex = 0;
 var numStars = 0;
 var acceleration = 1;
 var starsToDraw = (field.width * field.height) / 200;
-if (getUrlParameter("stars")) {
-    starsToDraw = getUrlParameter("stars");
-}
-if (getUrlParameter("accel")) {
-    acceleration = getUrlParameter("accel");
-}
-
 
 function Star() {
     this.X = field.width / 2;
@@ -103,8 +85,9 @@ function draw() {
     if (field.height != window.innerHeight)
         field.height = window.innerHeight;
 
-    // Play with the "a" value to create streams...it's fun!
-    f.fillStyle = "rgba(0, 0, 0, 0.8)";
+    // The alpha value can be adjusted to create a stream effect
+    f.fillStyle = "rgba(0, 0, 0, 0.6)";
+
     f.fillRect(0, 0, field.width, field.height);
 
     for (var i = numStars; i < starsToDraw; i++) {
@@ -117,5 +100,5 @@ function draw() {
     }
 }
 
-// Modify interval to create more stars
+// Modify interval to adjust speed
 if (f) setInterval(draw, 40);
